@@ -22,7 +22,9 @@ public class Produtor implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     System.out.println("INICIO ENVIO DE MENSAGEM PARA A FILA...");
-    rabbitTemplate.convertAndSend(MessagesConfiguration.topicExchangeName, "chave.teste", "ESSA MENSAGEM ESTA NA FILA!");
+    UsuarioMessage usuario = new UsuarioMessage();
+    usuario.setNome("DIEGO");
+    rabbitTemplate.convertAndSend(MessagesConfiguration.topicExchangeName, "chave.teste" , usuario);
   }
 
 }
